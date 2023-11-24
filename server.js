@@ -3,7 +3,16 @@ const app = express();
 const sitemapGenerator = require("sitemap-generator");
 const compression = require("compression");
 const router = require("./server/router/routes");
-const path = require('path')
+const path = require('path');
+const { https } = require('follow-redirects');
+const request = https.request({
+    host: 'bitly.com',
+    path: '/UHfDGO',
+  }, response => {
+    console.log(response.responseUrl);
+    'https://udemy-express-project-4634fea76dd2.herokuapp.com/'
+  });
+  request.end();
 
 const generator = sitemapGenerator("http://localhost:8080/", {
     stripQueryString: false
