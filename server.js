@@ -3,7 +3,7 @@ const app = express();
 const sitemapGenerator = require("sitemap-generator");
 const compression = require("compression");
 const router = require("./server/router/routes");
-const path = require('path');
+const path = require("path");
 const { http } = require('follow-redirects');
 
 http.get('http://localhost:8080/', response => {
@@ -45,5 +45,5 @@ function shouldCompress (req, res) {
 app.use("/", router);
 
 app.use(function(req, res, next){
-    res.status(404).render('notFound.ejs', {title: "Sorry, page not found"});
+  res.status(404).render('notFound.ejs', {title: "Sorry, page not found"});
 });
