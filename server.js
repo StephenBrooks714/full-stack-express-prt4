@@ -4,9 +4,9 @@ const sitemapGenerator = require("sitemap-generator");
 const compression = require("compression");
 const router = require("./server/router/routes");
 const path = require("path");
-const { http } = require('follow-redirects');
+const { https } = require('follow-redirects');
 
-http.get('http://localhost:8080/', response => {
+https.get('https://udemy-express-node-cf75af940836.herokuapp.com/', response => {
   response.on('data', chunk => {
     console.log(chunk);
   });
@@ -14,7 +14,7 @@ http.get('http://localhost:8080/', response => {
   console.error(err);
 });
 
-const generator = sitemapGenerator("http://localhost:8080/", {
+const generator = sitemapGenerator("https://udemy-express-node-cf75af940836.herokuapp.com/", {
     stripQueryString: false
 })
 generator.on('done', () => {
