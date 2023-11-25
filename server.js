@@ -4,15 +4,15 @@ const sitemapGenerator = require("sitemap-generator");
 const compression = require("compression");
 const router = require("./server/router/routes");
 const path = require('path');
-const { https } = require('follow-redirects');
-const request = https.request({
-    host: 'bitly.com',
-    path: '/UHfDGO',
-  }, response => {
-    console.log(response.responseUrl);
-    'https://udemy-express-project-4634fea76dd2.herokuapp.com/'
+const { http } = require('follow-redirects');
+
+http.get('http://localhost:8080/', response => {
+  response.on('data', chunk => {
+    console.log(chunk);
   });
-  request.end();
+}).on('error', err => {
+  console.error(err);
+});
 
 const generator = sitemapGenerator("http://localhost:8080/", {
     stripQueryString: false
@@ -31,16 +31,16 @@ const port = process.env.PORT;
 app.listen(port || 8000, () => {
     console.log(`App is listening on port ${port}`)
 });
+
 app.use(compression({ filter: shouldCompress }))
 function shouldCompress (req, res) {
     if (req.headers['x-no-compression']) {
       // don't compress responses with this request header
       return false
     }
-  
     // fallback to standard filter function
     return compression.filter(req, res)
-  }
+}
 
 app.use("/", router);
 
