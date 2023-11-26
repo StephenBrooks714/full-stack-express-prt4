@@ -3,6 +3,7 @@ const app = express();
 const sitemapGenerator = require("sitemap-generator");
 const compression = require("compression");
 const router = require("./server/router/routes");
+const mongoose = require("mongoose");
 const path = require("path");
 const { https } = require('follow-redirects');
 
@@ -26,6 +27,17 @@ require("dotenv").config();
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname,('public'))));
+
+mongoose.set("strictQuery", false);
+mongoose.connect(process.env.DB_URL, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
+if(mongoose){
+    console.log('Db connected')
+} else {
+    console.log('No Db connected')
+}
 
 const port = process.env.PORT;
 app.listen(port || 8000, () => {
