@@ -11,9 +11,9 @@ const blogsController = require("../controllers/blogsPageView");
 const postController = require("../controllers/postData");
 const deletePostController = require("../controllers/deletePost");
 // feature
-const newFeautreController = require("../controllers/newFeaturePage");
+const newFeatureController = require("../controllers/newFeaturePage");
 const storeFeatureController = require("../controllers/storeFeaturePost");
-const featuresControiller = require("../controllers/featruesPageData");
+const featuresController = require("../controllers/featruesPageData");
 const featureController = require("../controllers/featurePagePost");
 const deleteFeatureController = require("../controllers/deleteFeaturePost");
 // projects
@@ -32,9 +32,9 @@ router.get("/blogs", cache(2), blogsController);
 router.get("/post/:id", postController);
 router.get("/delete/post/:id", deletePostController);
 // features
-router.get("/newFeature", newFeautreController);
+router.get("/newFeature", newFeatureController);
 router.post("/store/feature", storeFeatureController);
-router.get("/features", featuresControiller);
+router.get("/features", featuresController);
 router.get("/feature/:id", featureController);
 router.get("/delete/feature/:id", deleteFeatureController);
 // projects

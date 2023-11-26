@@ -1,9 +1,4 @@
-<script
-type="text/javascript"
-src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/7.0.0/mdb.umd.min.js"
-></script>
-<script type="text/javascript">
-    let addFeature = document.getElementById("addFeature");
+let addFeature = document.getElementById("addFeature");
 let featureList = document.querySelector(".featureList");
 let featureDiv = document.querySelectorAll(".featureDiv")[0];
 
@@ -13,4 +8,3 @@ addFeature.addEventListener('click', function(){
     input.value = "";
     featureList.appendChild(newFeature)
 })
-</script>

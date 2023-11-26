@@ -4,6 +4,8 @@ const sitemapGenerator = require("sitemap-generator");
 const compression = require("compression");
 const router = require("./server/router/routes");
 const mongoose = require("mongoose");
+const fileUpload = require('express-fileupload');
+const bodyParser = require('body-parser');
 const path = require("path");
 const { https } = require('follow-redirects');
 
@@ -27,6 +29,9 @@ require("dotenv").config();
 
 app.set("view engine", "ejs");
 app.use(express.static(path.join(__dirname,('public'))));
+app.use(bodyParser.json())
+app.use(bodyParser.urlencoded({extended: true}));
+app.use(fileUpload());
 
 mongoose.set("strictQuery", false);
 mongoose.connect(process.env.DB_URL, {

@@ -1,0 +1,20 @@
+<div class="col-md-6 mb-3">
+    <h1 class="display-4 mb-1"><%= feature.title %></h1>
+    <h2 class="fw-bold h4">
+        <%= feature.userid.fName %> <%= feature.userid.lName %>
+    </h2>
+        <ul class="mb-0">
+            <% feature.feature.forEach(function(feature){ %>
+              <li>
+                <p><%= feature %></p>
+              </li>
+            <% }) %>
+        </ul>
+        <a href="<%= feature.url %>" target="_blank" class="btn btn-primary">Buy Service</a>
+</div>
+<div class="col-md-6 mb-3">
+    <img src="<%= feature.image %>" class="img-fluid" alt="<%= feature.title %>" />
+    <p>
+        <i><strong>Posted On:</strong> <%= feature.datePosted.toLocaleString() %></i>
+    </p>
+</div>
